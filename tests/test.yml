@@ -1,0 +1,7 @@
+---
+# test file for jira
+
+- hosts: localhost
+  remote_user: root
+  roles:
+    - ansible-role-jira

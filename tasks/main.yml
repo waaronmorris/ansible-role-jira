@@ -1,0 +1,62 @@
+---
+# tasks file for jira
+
+- name: create system user
+  user:
+    name={{ jira_user }}
+    password={{ jira_pass }}
+    home={{ jira_home }}
+    system=yes
+    shell=/bin/bash
+  tags: jira
+
+- name: prepare directory
+  file:
+    path={{ item }}
+    owner={{ jira_user }}
+    group={{ jira_user }}
+    state=directory
+    mode=0755
+  with_items:
+    - "{{ jira_catalina }}"
+  tags: jira
+
+- name: download package
+  get_url:
+    url={{ jira_url }}
+    dest={{ jira_archive }}
+    sha256sum={{ jira_sha256 }}
+  tags: jira
+
+- name: unarchive package
+  shell: tar zxvf {{ jira_archive }} -C {{ jira_catalina }} --strip-components=1; chown -Rf {{ jira_user }}:{{ jira_user }} {{ jira_catalina }}
+  args:
+    creates: "{{ jira_catalina }}/bin/start-jira.sh"
+  tags: jira
+
+- name: copy templates
+  template:
+    src="{{ item }}.j2"
+    dest="/{{ item }}"
+    owner={{ jira_user }}
+    group={{ jira_user }}
+    mode=0644
+  with_items:
+    - etc/init.d/jira
+    - usr/share/jira/bin/setenv.sh
+    - usr/share/jira/conf/server.xml
+  tags: jira
+
+- name: prepare service script
+  file:
+    path=/etc/init.d/jira
+    owner=root
+    group=root
+    state=file
+    mode=0755
+  tags: jira
+
+- name: enable service
+  service: name=jira enabled=yes
+  notify: restart jira
+  tags: jira
