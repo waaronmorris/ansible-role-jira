@@ -1,5 +1,5 @@
-Confluence
-==========
+JIRA
+====
 
 [![Build
 Status](https://travis-ci.org/pantarei/ansible-role-jira.svg?branch=master)](https://travis-ci.org/pantarei/ansible-role-jira)
