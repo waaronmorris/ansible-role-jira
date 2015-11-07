@@ -10,15 +10,15 @@
     shell=/bin/bash
   tags: jira
 
-- name: prepare directory
+- name: prepare files
   file:
-    path={{ item }}
-    owner={{ jira_user }}
-    group={{ jira_user }}
-    state=directory
-    mode=0755
+    path={{ item.path }}
+    owner={{ item.owner }}
+    group={{ item.group }}
+    mode={{ item.mode }}
+    state={{ item.state }}
   with_items:
-    - "{{ jira_catalina }}"
+    - { path: "{{ jira_catalina }}", owner: "{{ jira_user }}", group: "{{ jira_user }}", mode: '0755', state: 'directory' }
   tags: jira
 
 - name: download package
@@ -36,24 +36,15 @@
 
 - name: copy templates
   template:
-    src="{{ item }}.j2"
-    dest="/{{ item }}"
-    owner={{ jira_user }}
-    group={{ jira_user }}
-    mode=0644
+    src="{{ item.template }}.j2"
+    dest="/{{ item.template }}"
+    owner={{ item.owner }}
+    group={{ item.group }}
+    mode={{ item.mode }}
   with_items:
-    - etc/init.d/jira
-    - usr/share/jira/bin/setenv.sh
-    - usr/share/jira/conf/server.xml
-  tags: jira
-
-- name: prepare service script
-  file:
-    path=/etc/init.d/jira
-    owner=root
-    group=root
-    state=file
-    mode=0755
+    - { template: 'etc/init.d/jira', owner: 'root', group: 'root', mode: '0755' }
+    - { template: 'usr/share/jira/bin/setenv.sh', owner: "{{ jira_user }}", group: "{{ jira_user }}", mode: '0644' }
+    - { template: 'usr/share/jira/conf/server.xml', owner: "{{ jira_user }}", group: "{{ jira_user }}", mode: '0644' }
   tags: jira
 
 - name: enable service
