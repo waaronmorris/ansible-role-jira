@@ -8,6 +8,7 @@
     home={{ jira_home }}
     system=yes
     shell=/bin/bash
+  notify: restart jira
   tags: jira
 
 - name: prepare files
@@ -19,6 +20,7 @@
     state={{ item.state }}
   with_items:
     - { path: "{{ jira_catalina }}", owner: "{{ jira_user }}", group: "{{ jira_user }}", mode: '0755', state: 'directory' }
+  notify: restart jira
   tags: jira
 
 - name: download package
@@ -26,12 +28,14 @@
     url={{ jira_url }}
     dest={{ jira_archive }}
     sha256sum={{ jira_sha256 }}
+  notify: restart jira
   tags: jira
 
 - name: unarchive package
   shell: tar zxvf {{ jira_archive }} -C {{ jira_catalina }} --strip-components=1; chown -Rf {{ jira_user }}:{{ jira_user }} {{ jira_catalina }}
   args:
     creates: "{{ jira_catalina }}/bin/start-jira.sh"
+  notify: restart jira
   tags: jira
 
 - name: copy templates
@@ -45,6 +49,7 @@
     - { template: 'etc/init.d/jira', owner: 'root', group: 'root', mode: '0755' }
     - { template: 'usr/share/jira/bin/setenv.sh', owner: "{{ jira_user }}", group: "{{ jira_user }}", mode: '0644' }
     - { template: 'usr/share/jira/conf/server.xml', owner: "{{ jira_user }}", group: "{{ jira_user }}", mode: '0644' }
+  notify: restart jira
   tags: jira
 
 - name: enable service
