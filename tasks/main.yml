@@ -1,6 +1,25 @@
 ---
 # tasks file for jira
 
+- name: stop service if upgrade
+  service: name=jira state=stopped
+  when: jira_upgrade == true
+  notify: restart jira
+  tags: jira
+
+- name: remove legacy binary if upgrade
+  file:
+    path={{ item.path }}
+    owner={{ item.owner }}
+    group={{ item.group }}
+    mode={{ item.mode }}
+    state={{ item.state }}
+  with_items:
+    - { path: "{{ jira_catalina }}", owner: "{{ jira_user }}", group: "{{ jira_user }}", mode: '0755', state: 'absent' }
+  when: jira_upgrade == true
+  notify: restart jira
+  tags: jira
+
 - name: create system user
   user:
     name={{ jira_user }}
