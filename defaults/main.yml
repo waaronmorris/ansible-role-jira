@@ -2,6 +2,8 @@
 # defaults file for jira
 
 jira_archive: /tmp/atlassian-jira-software-7.0.0-jira-7.0.0.tar.gz
+jira_catalina: /usr/share/jira
+jira_home: /var/lib/jira
 jira_pass: Xea4aesh
 jira_proxy_name:
 jira_scheme:

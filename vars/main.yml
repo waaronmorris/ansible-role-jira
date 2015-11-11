@@ -1,5 +1,2 @@
 ---
 # vars file for jira
-
-jira_catalina: /usr/share/jira
-jira_home: /var/lib/jira
