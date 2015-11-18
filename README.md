@@ -51,11 +51,39 @@ Role Variables
 <td align="left">Location for the JIRA installation directory.</td>
 </tr>
 <tr class="odd">
+<td align="left">jira_connector_port</td>
+<td align="left">yes</td>
+<td align="left">8080</td>
+<td align="left"></td>
+<td align="left">JIRA Apache Tomcat connector port.</td>
+</tr>
+<tr class="even">
 <td align="left">jira_home</td>
 <td align="left">yes</td>
 <td align="left">/var/lib/jira</td>
 <td align="left"></td>
 <td align="left">Location for the JIRA home directory.</td>
+</tr>
+<tr class="odd">
+<td align="left">jira_jvm_maximum_memory</td>
+<td align="left">yes</td>
+<td align="left">1024m</td>
+<td align="left"></td>
+<td align="left">JIRA JVM maximum memory usage.</td>
+</tr>
+<tr class="even">
+<td align="left">jira_jvm_minimum_memory</td>
+<td align="left">yes</td>
+<td align="left">512m</td>
+<td align="left"></td>
+<td align="left">JIRA JVM minimum memory usage.</td>
+</tr>
+<tr class="odd">
+<td align="left">jira_jvm_support_recommended_args</td>
+<td align="left">no</td>
+<td align="left">-Datlassian.plugins.enable.wait=300</td>
+<td align="left"></td>
+<td align="left">Atlassian Support recommended JVM arguments.</td>
 </tr>
 <tr class="even">
 <td align="left">jira_pass</td>
@@ -83,13 +111,20 @@ Role Variables
 <td align="left">Install JIRA in standalone mode if <code>null</code>, or integrating with Apache using HTTP if <code>http</code>, or integrating with Apache using HTTPS if <code>https</code>.</td>
 </tr>
 <tr class="odd">
+<td align="left">jira_server_port</td>
+<td align="left">yes</td>
+<td align="left">8005</td>
+<td align="left"></td>
+<td align="left">JIRA Apache Tomcat server port.</td>
+</tr>
+<tr class="even">
 <td align="left">jira_sha256</td>
 <td align="left">yes</td>
 <td align="left">2eb0aff3e71272dc0fd3d9d6894f219f92033d004e46b25b542241151a732817</td>
 <td align="left"></td>
 <td align="left">Download archive sha256 checksum for cache during (re)install.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">jira_upgrade</td>
 <td align="left">no</td>
 <td align="left"><code>false</code></td>
@@ -99,14 +134,14 @@ Role Variables
 </ul></td>
 <td align="left">If <code>true</code>, trigger upgrade by stop existing JIRA service, purge existing JIRA installation direcoty before normal tasks.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">jira_url</td>
 <td align="left">yes</td>
 <td align="left">https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.0.0-jira-7.0.0.tar.gz</td>
 <td align="left"></td>
 <td align="left">URL for download archive.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">jira_user</td>
 <td align="left">yes</td>
 <td align="left">jira</td>
