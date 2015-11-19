@@ -1,5 +1,5 @@
 ---
-# tasks file for jira
+# tasks file for hswong3i.jira
 
 - name: stop service if upgrade
   service: name=jira state=stopped
