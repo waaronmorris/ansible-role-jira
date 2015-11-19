@@ -1,5 +1,5 @@
 ---
-# defaults file for jira
+# defaults file for hswong3i.jira
 
 jira_archive: /tmp/atlassian-jira-software-7.0.0-jira-7.0.0.tar.gz
 jira_catalina: /usr/share/jira
