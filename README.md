@@ -2,9 +2,9 @@ Ansible Role for JIRA
 =====================
 
 [![Build Status](https://travis-ci.org/pantarei/ansible-role-jira.svg?branch=master)](https://travis-ci.org/pantarei/ansible-role-jira)
-[![GitHub tag](https://img.shields.io/github/tag/pantarei/ansible-role-jira.svg)](https://github.com/pantarei/ansible-role-jira)
-[![GitHub license](https://img.shields.io/github/license/pantarei/ansible-role-jira.svg)](https://github.com/pantarei/ansible-role-jira/blob/master/LICENSE)
-[![Ansible Role](https://img.shields.io/ansible/role/5989.svg)](https://galaxy.ansible.com/detail#/role/5989)
+ [![GitHub tag](https://img.shields.io/github/tag/pantarei/ansible-role-jira.svg)](https://github.com/pantarei/ansible-role-jira)
+ [![GitHub license](https://img.shields.io/github/license/pantarei/ansible-role-jira.svg)](https://github.com/pantarei/ansible-role-jira/blob/master/LICENSE)
+ [![Ansible Role](https://img.shields.io/ansible/role/5989.svg)](https://galaxy.ansible.com/detail#/role/5989)
 
 Ansible Role for Atlassian JIRA Installation.
 
@@ -161,7 +161,6 @@ Example Playbook
 
     - hosts: servers
       roles:
-        - { role: hswong3i.java }
         - { role: hswong3i.jira, jira_user: 'jira', jira_pass: 'Xea4aesh', jira_upgrade: 'false' }
 
 License
