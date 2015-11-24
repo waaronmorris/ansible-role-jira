@@ -75,3 +75,14 @@
   service: name=jira enabled=yes
   notify: restart jira
   tags: hswong3i.jira
+
+- name: enable incomming connection
+  ufw:
+    to_port={{ item }}
+    proto=tcp
+    rule=allow
+  with_items:
+    - "{{ jira_connector_port }}"
+    - "{{ jira_server_port }}"
+  notify: restart jira
+  tags: hswong3i.jira
