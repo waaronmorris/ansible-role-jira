@@ -39,7 +39,7 @@ Role Variables
 <tr class="odd">
 <td align="left">jira_archive</td>
 <td align="left">yes</td>
-<td align="left">/tmp/atlassian-jira-software-7.0.0-jira-7.0.0.tar.gz</td>
+<td align="left"><a href="https://github.com/pantarei/ansible-role-jira/blob/master/defaults/main.yml">defaults/main.yml</a></td>
 <td align="left"></td>
 <td align="left">Download archive filename for cache during (re)install.</td>
 </tr>
@@ -81,7 +81,7 @@ Role Variables
 <tr class="odd">
 <td align="left">jira_jvm_support_recommended_args</td>
 <td align="left">no</td>
-<td align="left">-Datlassian.plugins.enable.wait=300</td>
+<td align="left"><a href="https://github.com/pantarei/ansible-role-jira/blob/master/defaults/main.yml">defaults/main.yml</a></td>
 <td align="left"></td>
 <td align="left">Atlassian Support recommended JVM arguments.</td>
 </tr>
@@ -120,7 +120,7 @@ Role Variables
 <tr class="even">
 <td align="left">jira_sha256</td>
 <td align="left">yes</td>
-<td align="left">2eb0aff3e71272dc0fd3d9d6894f219f92033d004e46b25b542241151a732817</td>
+<td align="left"><a href="https://github.com/pantarei/ansible-role-jira/blob/master/defaults/main.yml">defaults/main.yml</a></td>
 <td align="left"></td>
 <td align="left">Download archive sha256 checksum for cache during (re)install.</td>
 </tr>
@@ -137,7 +137,7 @@ Role Variables
 <tr class="even">
 <td align="left">jira_url</td>
 <td align="left">yes</td>
-<td align="left">https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.0.0-jira-7.0.0.tar.gz</td>
+<td align="left"><a href="https://github.com/pantarei/ansible-role-jira/blob/master/defaults/main.yml">defaults/main.yml</a></td>
 <td align="left"></td>
 <td align="left">URL for download archive.</td>
 </tr>
@@ -154,8 +154,8 @@ Role Variables
 Dependencies
 ------------
 
--   [hswong3i.java](https://galaxy.ansible.com/detail#/role/5971)
--   [hswong3i.ufw](https://galaxy.ansible.com/detail#/role/6153)
+-   [hswong3i.java](https://github.com/pantarei/ansible-role-java)
+-   [hswong3i.ufw](https://github.com/pantarei/ansible-role-ufw)
 
 Example Playbook
 ----------------
@@ -167,7 +167,7 @@ Example Playbook
 License
 -------
 
--   Code released under [MIT](https://github.com/hswong3i/ansible-role-jira/blob/master/LICENSE)
+-   Code released under [MIT](https://github.com/pantarei/ansible-role-jira/blob/master/LICENSE)
 -   Docs released under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
 
 Author Information
