@@ -1,7 +1,7 @@
 ---
 # defaults file for hswong3i.jira
 
-jira_archive: /tmp/atlassian-jira-software-7.0.2-jira-7.0.2.tar.gz
+jira_archive: /tmp/atlassian-jira-software-7.0.3-jira-7.0.3.tar.gz
 jira_catalina: /usr/share/jira
 jira_connector_port: 8080
 jira_home: /var/lib/jira
@@ -12,7 +12,7 @@ jira_pass: Xea4aesh
 jira_proxy_name:
 jira_scheme:
 jira_server_port: 8005
-jira_sha256: 49a4aca54a5461762d5064b27fce9cb2b8a8a020c1c073c7499a48c19cc8542b
+jira_sha256: ca1413fd0f31d462b26ef9249a9f4b38f7ad68e78520c6f3d62e26ff0fb0dea1
 jira_upgrade: false
-jira_url: https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.0.2-jira-7.0.2.tar.gz
+jira_url: https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.0.3-jira-7.0.3.tar.gz
 jira_user: jira
