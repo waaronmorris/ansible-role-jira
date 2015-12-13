@@ -9,8 +9,8 @@ jira_jvm_maximum_memory: 1024m
 jira_jvm_minimum_memory: 512m
 jira_jvm_support_recommended_args: -Datlassian.plugins.enable.wait=300
 jira_pass: Xea4aesh
-jira_proxy_name:
-jira_scheme:
+jira_proxy_name: ~
+jira_scheme: ~
 jira_server_port: 8005
 jira_sha256: ca1413fd0f31d462b26ef9249a9f4b38f7ad68e78520c6f3d62e26ff0fb0dea1
 jira_upgrade: false
