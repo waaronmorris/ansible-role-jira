@@ -32,7 +32,7 @@
 - name: create user
   user:
     name={{ jira_user }}
-    password={{ jira_pass | password_hash('sha512') }}
+    password={{ jira_pass | password_hash('sha512', jira_hash_salt) }}
     home={{ jira_home }}
     shell=/bin/bash
   notify: restart jira
