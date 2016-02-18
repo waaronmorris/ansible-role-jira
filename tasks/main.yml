@@ -1,25 +1,6 @@
 ---
 # tasks file for hswong3i.jira
 
-- name: stop service if upgrade
-  service: name=jira state=stopped
-  when: jira_upgrade == true
-  notify: restart jira
-  tags: hswong3i.jira
-
-- name: remove legacy binary if upgrade
-  file:
-    path={{ item.path }}
-    owner={{ item.owner }}
-    group={{ item.group }}
-    mode={{ item.mode }}
-    state={{ item.state }}
-  with_items:
-    - { path: "{{ jira_catalina }}", owner: "{{ jira_user }}", group: "{{ jira_user }}", mode: '0755', state: 'absent' }
-  when: jira_upgrade == true
-  notify: restart jira
-  tags: hswong3i.jira
-
 - name: apt-get install
   apt:
     name={{ item.name }}
@@ -53,13 +34,12 @@
 - name: download package
   get_url:
     url={{ jira_url }}
-    dest={{ jira_archive }}
-    sha256sum={{ jira_sha256 }}
-  notify: restart jira
+    dest="/tmp/{{ jira_archive }}"
+    checksum={{ jira_checksum }}
   tags: hswong3i.jira
 
 - name: unarchive package
-  shell: tar zxvf {{ jira_archive }} -C {{ jira_catalina }} --strip-components=1; chown -Rf {{ jira_user }}:{{ jira_user }} {{ jira_catalina }}
+  shell: tar zxvf /tmp/{{ jira_archive }} -C {{ jira_catalina }} --strip-components=1; chown -Rf {{ jira_user }}:{{ jira_user }} {{ jira_catalina }}
   args:
     creates: "{{ jira_catalina }}/bin/start-jira.sh"
   notify: restart jira
