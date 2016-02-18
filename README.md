@@ -51,69 +51,76 @@ Role Variables
 <td align="left">Location for the JIRA installation directory.</td>
 </tr>
 <tr class="odd">
+<td align="left">jira_checksum</td>
+<td align="left">yes</td>
+<td align="left"><a href="https://github.com/pantarei/ansible-role-jira/blob/master/defaults/main.yml">defaults/main.yml</a></td>
+<td align="left"></td>
+<td align="left">Download archive sha256 checksum for cache during (re)install.</td>
+</tr>
+<tr class="even">
 <td align="left">jira_connector_port</td>
 <td align="left">yes</td>
 <td align="left">8080</td>
 <td align="left"></td>
 <td align="left">JIRA Apache Tomcat connector port.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">jira_context_path</td>
 <td align="left">no</td>
 <td align="left"><code>null</code></td>
 <td align="left"></td>
 <td align="left">Pass value as <code>path</code> to <a href="https://github.com/pantarei/ansible-role-jira/blob/master/templates/usr/share/jira/conf/server.xml.j2">template</a>.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">jira_hash_salt</td>
 <td align="left">yes</td>
 <td align="left"><a href="https://github.com/pantarei/ansible-role-jira/blob/master/defaults/main.yml">defaults/main.yml</a></td>
 <td align="left"></td>
 <td align="left">Specific password hash salt for sha512.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">jira_home</td>
 <td align="left">yes</td>
 <td align="left">/var/lib/jira</td>
 <td align="left"></td>
 <td align="left">Location for the JIRA home directory.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">jira_jvm_maximum_memory</td>
 <td align="left">yes</td>
 <td align="left">1024m</td>
 <td align="left"></td>
 <td align="left">JIRA JVM maximum memory usage.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">jira_jvm_minimum_memory</td>
 <td align="left">yes</td>
 <td align="left">512m</td>
 <td align="left"></td>
 <td align="left">JIRA JVM minimum memory usage.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">jira_jvm_support_recommended_args</td>
 <td align="left">no</td>
 <td align="left"><a href="https://github.com/pantarei/ansible-role-jira/blob/master/defaults/main.yml">defaults/main.yml</a></td>
 <td align="left"></td>
 <td align="left">Atlassian Support recommended JVM arguments.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">jira_pass</td>
 <td align="left">yes</td>
 <td align="left">Xea4aesh</td>
 <td align="left"></td>
 <td align="left">Password for JIRA system user.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">jira_proxy_name</td>
 <td align="left">no</td>
 <td align="left"><code>null</code></td>
 <td align="left"></td>
 <td align="left">Pass value as <code>proxyName</code> to <a href="https://github.com/pantarei/ansible-role-jira/blob/master/templates/usr/share/jira/conf/server.xml.j2">template</a>.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">jira_scheme</td>
 <td align="left">no</td>
 <td align="left"><code>null</code></td>
@@ -124,38 +131,21 @@ Role Variables
 </ul></td>
 <td align="left">Install JIRA in standalone mode if <code>null</code>, or integrating with Apache using HTTP if <code>http</code>, or integrating with Apache using HTTPS if <code>https</code>.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">jira_server_port</td>
 <td align="left">yes</td>
 <td align="left">8005</td>
 <td align="left"></td>
 <td align="left">JIRA Apache Tomcat server port.</td>
 </tr>
-<tr class="even">
-<td align="left">jira_sha256</td>
-<td align="left">yes</td>
-<td align="left"><a href="https://github.com/pantarei/ansible-role-jira/blob/master/defaults/main.yml">defaults/main.yml</a></td>
-<td align="left"></td>
-<td align="left">Download archive sha256 checksum for cache during (re)install.</td>
-</tr>
 <tr class="odd">
-<td align="left">jira_upgrade</td>
-<td align="left">no</td>
-<td align="left"><code>false</code></td>
-<td align="left"><ul>
-<li><code>true</code></li>
-<li><code>false</code></li>
-</ul></td>
-<td align="left">If <code>true</code>, trigger upgrade by stop existing JIRA service, purge existing JIRA installation direcoty before normal tasks.</td>
-</tr>
-<tr class="even">
 <td align="left">jira_url</td>
 <td align="left">yes</td>
 <td align="left"><a href="https://github.com/pantarei/ansible-role-jira/blob/master/defaults/main.yml">defaults/main.yml</a></td>
 <td align="left"></td>
 <td align="left">URL for download archive.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">jira_user</td>
 <td align="left">yes</td>
 <td align="left">jira</td>
@@ -175,7 +165,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-        - { role: hswong3i.jira, jira_user: 'jira', jira_pass: 'Xea4aesh', jira_upgrade: 'false' }
+        - { role: hswong3i.jira }
 
 License
 -------
