@@ -1,9 +1,9 @@
 ---
 # defaults file for hswong3i.jira
 
-jira_archive: atlassian-jira-software-7.1.0-jira-7.1.0.tar.gz
+jira_archive: atlassian-jira-software-7.1.1-jira-7.1.1.tar.gz
 jira_catalina: /usr/share/jira
-jira_checksum: "sha256:a4bdd2c0d9fd92c1cebab6eacef29e35f73058350a918bdfcb1b6a991d9992f2"
+jira_checksum: "sha256:3b4c518e7a03fb3e368c8bc89e5420bfb8ca70822b761e5b27f32988849fe644"
 jira_connector_port: 8080
 jira_context_path: ~
 jira_hash_salt: Jeef7Roo2wush0sh
