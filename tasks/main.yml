@@ -3,8 +3,8 @@
 
 - name: apt-get install
   apt:
-    name={{ item.name }}
-    state={{ item.state }}
+    name="{{ item.name }}"
+    state="{{ item.state }}"
   with_items:
     - { state: 'latest', name: 'ufw' }
   notify: restart jira
@@ -12,20 +12,20 @@
 
 - name: create user
   user:
-    name={{ jira_user }}
-    password={{ jira_pass | password_hash('sha512', jira_hash_salt) }}
-    home={{ jira_home }}
+    name="{{ jira_user }}"
+    password="{{ jira_pass | password_hash('sha512', jira_hash_salt) }}"
+    home="{{ jira_home }}"
     shell=/bin/bash
   notify: restart jira
   tags: hswong3i.jira
 
 - name: prepare files
   file:
-    path={{ item.path }}
-    owner={{ item.owner }}
-    group={{ item.group }}
-    mode={{ item.mode }}
-    state={{ item.state }}
+    path="{{ item.path }}"
+    owner="{{ item.owner }}"
+    group="{{ item.group }}"
+    mode="{{ item.mode }}"
+    state="{{ item.state }}"
   with_items:
     - { path: "{{ jira_catalina }}", owner: "{{ jira_user }}", group: "{{ jira_user }}", mode: '0755', state: 'directory' }
   notify: restart jira
@@ -33,9 +33,9 @@
 
 - name: download package
   get_url:
-    url={{ jira_url }}
+    url="{{ jira_url }}"
     dest="/tmp/{{ jira_archive }}"
-    checksum={{ jira_checksum }}
+    checksum="{{ jira_checksum }}"
   tags: hswong3i.jira
 
 - name: unarchive package
@@ -47,11 +47,11 @@
 
 - name: copy templates
   template:
-    src={{ item.src }}
-    dest={{ item.dest }}
-    owner={{ item.owner }}
-    group={{ item.group }}
-    mode={{ item.mode }}
+    src="{{ item.src }}"
+    dest="{{ item.dest }}"
+    owner="{{ item.owner }}"
+    group="{{ item.group }}"
+    mode="{{ item.mode }}"
   with_items:
     - { src: 'etc/init.d/jira.j2', dest: '/etc/init.d/jira', owner: 'root', group: 'root', mode: '0755' }
     - { src: 'usr/share/jira/bin/setenv.sh.j2', dest: "{{ jira_catalina }}/bin/setenv.sh", owner: "{{ jira_user }}", group: "{{ jira_user }}", mode: '0644' }
@@ -66,9 +66,9 @@
 
 - name: enable incomming connection
   ufw:
-    to_port={{ item.to_port }}
-    proto={{ item.proto }}
-    rule={{ item.rule }}
+    to_port="{{ item.to_port }}"
+    proto="{{ item.proto }}"
+    rule="{{ item.rule }}"
   with_items:
     - { to_port: "{{ jira_connector_port }}", proto: 'tcp', rule: 'allow' }
     - { to_port: "{{ jira_server_port }}", proto: 'tcp', rule: 'allow' }
