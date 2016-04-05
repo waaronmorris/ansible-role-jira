@@ -10,11 +10,20 @@
   notify: restart jira
   tags: hswong3i.jira
 
+- name: create group
+  group:
+    name: "{{ jira_user }}"
+    gid: "{{ jira_gid | default(None) or omit }}"
+  notify: restart jira
+  tags: hswong3i.jira
+
 - name: create user
   user:
     name: "{{ jira_user }}"
     password: "{{ jira_pass | password_hash('sha512', jira_hash_salt) }}"
     home: "{{ jira_home }}"
+    group: "{{ jira_user }}"
+    uid: "{{ jira_uid | default(None) or omit }}"
     shell: "/bin/bash"
   notify: restart jira
   tags: hswong3i.jira
